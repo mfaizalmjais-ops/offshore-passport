@@ -1,0 +1,10 @@
+{
+  "name": "Offshore Passport",
+  "short_name": "Offshore Passport",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fa",
+  "theme_color": "#073b70",
+  "description": "Personal digital offshore passport"
+}
