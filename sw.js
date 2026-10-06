@@ -1,9 +1,10 @@
-const CACHE_NAME = "offshore-passport-v1";
+const CACHE_NAME = "offshore-passport-v2";
 
 const FILES_TO_CACHE = [
   "./",
   "./index.html",
-  "./manifest.webmanifest"
+  "./manifest.webmanifest",
+  "./Vestigo%20Logo.WEBP"
 ];
 
 self.addEventListener("install", event => {
