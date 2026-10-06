@@ -3,127 +3,1555 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <meta name="theme-color" content="#073b70">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Offshore Passport">
+
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-192.png">
+
 <title>Offshore Passport</title>
+
 <style>
-:root{--navy:#073b70;--teal:#0aa58f;--bg:#f3f6fa;--ink:#152033;--muted:#6c788a;--line:#e1e6ee;--card:#fff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
-.app{max-width:720px;margin:auto;min-height:100vh;padding-bottom:84px}.hero{color:#fff;padding:26px 18px 22px;background:linear-gradient(145deg,#052a51,#073b70 58%,#0aa58f);border-radius:0 0 28px 28px}
-.hero small{opacity:.78}.hero h1{margin:4px 0;font-size:28px}.hero p{margin:0;opacity:.82;font-size:13px}
-main{padding:15px}.screen{display:none}.screen.active{display:block}.card{background:var(--card);border-radius:19px;padding:16px;margin-bottom:13px;box-shadow:0 6px 22px #15365b12}
-.ecard{padding:0;overflow:hidden}.ecardTop{padding:18px;background:linear-gradient(145deg,#fff,#eef7fb)}
-.brand{display:flex;gap:12px;align-items:center}.mark{width:48px;height:48px;border-radius:14px;background:var(--navy);display:grid;place-items:center;color:#fff;font-weight:900}
-.name{font-size:19px;font-weight:850}.muted{font-size:12px;color:var(--muted)}h2{font-size:18px;margin:0 0 12px}
-.pill{display:inline-block;padding:6px 9px;border-radius:99px;background:#e6f7f3;color:#087b6d;font-size:10px;font-weight:850}.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.kv{background:#f6f8fb;border-radius:12px;padding:10px}.label{font-size:9px;text-transform:uppercase;color:#758196;letter-spacing:.05em}.kv b{display:block;font-size:13px;margin-top:3px;word-break:break-word}
-.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:800;background:var(--navy);color:#fff}.btn.alt{background:#eaf0f6;color:var(--navy)}.btn.danger{background:#fff0f0;color:#a32323}.actions{display:flex;gap:8px;flex-wrap:wrap}.list{display:grid;gap:9px}.row{background:#f7f9fc;border-radius:13px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.status{font-size:10px;font-weight:850;padding:5px 8px;border-radius:99px;background:#e8f7ee;color:#15733e;white-space:nowrap}.status.warn{background:#fff5dc;color:#986200}.status.bad{background:#ffebeb;color:#a32121}
-input,textarea,select{width:100%;border:1px solid #d5dce6;border-radius:11px;padding:11px;font:inherit;background:#fff}label{display:block;color:#6b778a;font-size:11px;font-weight:800;margin:9px 0 5px}
-.bottom{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);z-index:20}.bottomIn{max-width:720px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr)}.nav{border:0;background:#fff;color:#778296;padding:9px 1px 8px;font-size:9px;font-weight:800}.nav span{display:block;font-size:18px;line-height:20px}.nav.active{color:var(--navy)}
-.notice{background:#edf6ff;border-left:4px solid #0b63a7;border-radius:10px;padding:11px;font-size:12px}.empty{text-align:center;color:var(--muted);padding:20px}.install{display:none}.install.show{display:block}
+:root{
+  --navy:#073b70;
+  --teal:#0aa58f;
+  --bg:#f3f6fa;
+  --ink:#152033;
+  --muted:#6c788a;
+  --line:#e1e6ee;
+  --card:#fff
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif
+}
+
+.app{
+  max-width:720px;
+  margin:auto;
+  min-height:100vh;
+  padding-bottom:84px
+}
+
+.hero{
+  color:#fff;
+  padding:26px 18px 22px;
+  background:linear-gradient(145deg,#052a51,#073b70 58%,#0aa58f);
+  border-radius:0 0 28px 28px
+}
+
+.hero small{opacity:.78}
+.hero h1{margin:4px 0;font-size:28px}
+.hero p{margin:0;opacity:.82;font-size:13px}
+
+main{padding:15px}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.card{
+  background:var(--card);
+  border-radius:19px;
+  padding:16px;
+  margin-bottom:13px;
+  box-shadow:0 6px 22px #15365b12
+}
+
+.ecard{
+  padding:0;
+  overflow:hidden
+}
+
+.ecardTop{
+  padding:18px;
+  background:linear-gradient(145deg,#fff,#eef7fb)
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:center
+}
+
+.mark{
+  width:48px;
+  height:48px;
+  min-width:48px;
+  border-radius:14px;
+  background:var(--navy);
+  display:grid;
+  place-items:center;
+  color:#fff;
+  font-weight:900;
+  overflow:hidden
+}
+
+.mark img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block
+}
+
+.name{
+  font-size:19px;
+  font-weight:850
+}
+
+.muted{
+  font-size:12px;
+  color:var(--muted)
+}
+
+h2{
+  font-size:18px;
+  margin:0 0 12px
+}
+
+.pill{
+  display:inline-block;
+  padding:6px 9px;
+  border-radius:99px;
+  background:#e6f7f3;
+  color:#087b6d;
+  font-size:10px;
+  font-weight:850
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+  margin-top:12px
+}
+
+.kv{
+  background:#f6f8fb;
+  border-radius:12px;
+  padding:10px
+}
+
+.label{
+  font-size:9px;
+  text-transform:uppercase;
+  color:#758196;
+  letter-spacing:.05em
+}
+
+.kv b{
+  display:block;
+  font-size:13px;
+  margin-top:3px;
+  word-break:break-word
+}
+
+.btn{
+  border:0;
+  border-radius:12px;
+  padding:11px 14px;
+  font-weight:800;
+  background:var(--navy);
+  color:#fff;
+  display:inline-block;
+  cursor:pointer;
+  text-align:center
+}
+
+.btn.alt{
+  background:#eaf0f6;
+  color:var(--navy)
+}
+
+.btn.danger{
+  background:#fff0f0;
+  color:#a32323
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap
+}
+
+.list{
+  display:grid;
+  gap:9px
+}
+
+.row{
+  background:#f7f9fc;
+  border-radius:13px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px
+}
+
+.status{
+  font-size:10px;
+  font-weight:850;
+  padding:5px 8px;
+  border-radius:99px;
+  background:#e8f7ee;
+  color:#15733e;
+  white-space:nowrap
+}
+
+.status.warn{
+  background:#fff5dc;
+  color:#986200
+}
+
+.status.bad{
+  background:#ffebeb;
+  color:#a32121
+}
+
+input,textarea,select{
+  width:100%;
+  border:1px solid #d5dce6;
+  border-radius:11px;
+  padding:11px;
+  font:inherit;
+  background:#fff
+}
+
+label{
+  display:block;
+  color:#6b778a;
+  font-size:11px;
+  font-weight:800;
+  margin:9px 0 5px
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#fff;
+  border-top:1px solid var(--line);
+  z-index:20
+}
+
+.bottomIn{
+  max-width:720px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(5,1fr)
+}
+
+.nav{
+  border:0;
+  background:#fff;
+  color:#778296;
+  padding:9px 1px 8px;
+  font-size:9px;
+  font-weight:800
+}
+
+.nav span{
+  display:block;
+  font-size:18px;
+  line-height:20px
+}
+
+.nav.active{
+  color:var(--navy)
+}
+
+.notice{
+  background:#edf6ff;
+  border-left:4px solid #0b63a7;
+  border-radius:10px;
+  padding:11px;
+  font-size:12px
+}
+
+.empty{
+  text-align:center;
+  color:var(--muted);
+  padding:20px
+}
+
+.install{
+  display:none
+}
+
+.install.show{
+  display:block
+}
+
+.photoPreview{
+  width:110px;
+  height:110px;
+  border-radius:22px;
+  overflow:hidden;
+  background:#eaf0f6;
+  display:grid;
+  place-items:center;
+  margin:0 auto 14px;
+  color:var(--navy);
+  font-weight:900;
+  font-size:28px
+}
+
+.photoPreview img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
 </style>
 </head>
+
 <body>
-<img src="EPOMS%20LOGO.PNG" alt="EPOMS Logo" style="display:block;width:150px;margin:20px auto;">
+
+<img
+  src="EPOMS%20LOGO.PNG"
+  alt="EPOMS Logo"
+  style="display:block;width:150px;margin:20px auto;"
+>
+
 <div class="app">
-<header class="hero"><small>PERSONAL DIGITAL OFFSHORE PASSPORT</small><h1>Offshore Passport</h1><p>eCard • Certificates • Training • Offshore Log • Documents</p></header>
+
+<header class="hero">
+  <small>PERSONAL DIGITAL OFFSHORE PASSPORT</small>
+  <h1>Offshore Passport</h1>
+  <p>eCard • Certificates • Training • Offshore Log • Documents</p>
+</header>
+
 <main>
+
+<!-- HOME -->
 <section id="home" class="screen active">
-<div class="card ecard"><div class="ecardTop">
-<div class="brand"><div class="mark" id="avatarBox">OP</div>
-<div style="margin-top:13px"><span class="pill">OFFSHORE PERSONNEL</span></div>
-<div class="grid"><div class="kv"><span class="label">Company</span><b id="company"></b></div><div class="kv"><span class="label">Card No.</span><b id="card"></b></div><div class="kv"><span class="label">Nationality</span><b id="nation"></b></div><div class="kv"><span class="label">Valid Till</span><b id="valid"></b></div></div>
-</div><div style="padding:16px"><h2>Certification Status</h2><div id="summary"></div></div></div>
-<div class="card"><h2>Quick Access</h2><div class="actions"><button class="btn" onclick="go('cert')">Certificates</button><button class="btn alt" onclick="go('log')">Offshore Log</button><button class="btn alt" onclick="go('qr')">QR eCard</button></div></div>
-<div class="card install" id="installBox"><h2>Install App</h2><p class="muted">Safari: Share → Add to Home Screen.</p><button class="btn" onclick="installApp()">Install</button></div>
-</section>
-<section id="cert" class="screen"><div class="card"><h2>Certifications & Medical</h2><div id="certList" class="list"></div><button class="btn" onclick="addCert()" style="margin-top:12px">+ Add Certification</button></div></section>
-<section id="training" class="screen"><div class="card"><h2>Training Records</h2><div id="trainingList" class="list"></div><button class="btn" onclick="addTraining()" style="margin-top:12px">+ Add Training</button></div></section>
-<section id="log" class="screen"><div class="card"><h2>Offshore Work Log</h2><div id="logList" class="list"></div><button class="btn" onclick="addLog()" style="margin-top:12px">+ Add Offshore Record</button></div></section>
-<section id="docs" class="screen"><div class="card"><h2>Documents</h2><p class="muted">Untuk V1, rekod dokumen disimpan sebagai metadata. Upload fail/encryption/cloud backup boleh ditambah pada V2.</p><div id="docList" class="list"></div><button class="btn" onclick="addDoc()" style="margin-top:12px">+ Add Document</button></div></section>
+
+<div class="card ecard">
+
+<div class="ecardTop">
+
+<div class="brand">
+
+<div class="mark" id="avatarBox">OP</div>
+
+<div>
+  <div class="name" id="name"></div>
+  <div class="muted" id="role"></div>
+</div>
+
+</div>
+
+<div style="margin-top:13px">
+  <span class="pill">OFFSHORE PERSONNEL</span>
+</div>
+
+<div class="grid">
+
+<div class="kv">
+<span class="label">Company</span>
+<b id="company"></b>
+</div>
+
+<div class="kv">
+<span class="label">Card No.</span>
+<b id="card"></b>
+</div>
+
+<div class="kv">
+<span class="label">Nationality</span>
+<b id="nation"></b>
+</div>
+
+<div class="kv">
+<span class="label">Valid Till</span>
+<b id="valid"></b>
+</div>
+
+</div>
+</div>
+
+<div style="padding:16px">
+
+<h2>Certification Status</h2>
+
+<div id="summary"></div>
+
+</div>
+
+</div>
+
 <div class="card">
-  <h2>Personal Photo</h2>
-  <label class="btn" for="photoInput">📷 Pilih Gambar Personal</label>
-  <input id="photoInput" type="file" accept="image/*" style="display:none">
+
+<h2>Quick Access</h2>
+
+<div class="actions">
+
+<button class="btn" onclick="go('cert')">
+Certificates
+</button>
+
+<button class="btn alt" onclick="go('log')">
+Offshore Log
+</button>
+
+<button class="btn alt" onclick="go('qr')">
+QR eCard
+</button>
+
 </div>
-<label class="btn" for="photoInput"> Pilih Gambar Personal</label>
-<input id="photoInput" type="file" accept="image/*" style="display:none">
-<label>Nama</label><input id="fName"><label>Jawatan</label><input id="fRole"><label>Company</label><input id="fCompany"><label>Nationality</label><input id="fNation"><label>Card No.</label><input id="fCard"><label>Card Valid Till</label><input id="fValid" type="date">
-<div class="actions" style="margin-top:13px"><button class="btn" onclick="saveProfile()">Save</button><button class="btn alt" onclick="exportData()">Backup</button><button class="btn alt" onclick="importData()">Restore</button></div></div>
-<div class="card"><div class="notice"><b>Security:</b> Jangan letak NRIC/passport dalam QR. Untuk production, tambah Face ID/passcode, encrypted storage dan secure cloud sync.</div></div></section>
-<section id="qr" class="screen"><div class="card"><h2>QR eCard</h2><div style="text-align:center"><img id="qr" style="width:220px;height:220px;border-radius:12px;background:#fff" alt="QR"></div><p class="muted">QR hanya membawa nama, jawatan, company, card number dan validity.</p></div></section>
+
+</div>
+
+<div class="card install" id="installBox">
+
+<h2>Install App</h2>
+
+<p class="muted">
+Safari: Share → Add to Home Screen.
+</p>
+
+<button class="btn" onclick="installApp()">
+Install
+</button>
+
+</div>
+
+</section>
+
+
+<!-- CERT -->
+<section id="cert" class="screen">
+
+<div class="card">
+
+<h2>Certifications & Medical</h2>
+
+<div id="certList" class="list"></div>
+
+<button
+  class="btn"
+  onclick="addCert()"
+  style="margin-top:12px"
+>
++ Add Certification
+</button>
+
+</div>
+
+</section>
+
+
+<!-- TRAINING -->
+<section id="training" class="screen">
+
+<div class="card">
+
+<h2>Training Records</h2>
+
+<div id="trainingList" class="list"></div>
+
+<button
+  class="btn"
+  onclick="addTraining()"
+  style="margin-top:12px"
+>
++ Add Training
+</button>
+
+</div>
+
+</section>
+
+
+<!-- LOG -->
+<section id="log" class="screen">
+
+<div class="card">
+
+<h2>Offshore Work Log</h2>
+
+<div id="logList" class="list"></div>
+
+<button
+  class="btn"
+  onclick="addLog()"
+  style="margin-top:12px"
+>
++ Add Offshore Record
+</button>
+
+</div>
+
+</section>
+
+
+<!-- DOCUMENTS -->
+<section id="docs" class="screen">
+
+<div class="card">
+
+<h2>Documents</h2>
+
+<p class="muted">
+Untuk V1, rekod dokumen disimpan sebagai metadata.
+Upload fail/encryption/cloud backup boleh ditambah pada V2.
+</p>
+
+<div id="docList" class="list"></div>
+
+<button
+  class="btn"
+  onclick="addDoc()"
+  style="margin-top:12px"
+>
++ Add Document
+</button>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile" class="screen">
+
+<div class="card">
+
+<h2>Personal Photo</h2>
+
+<div class="photoPreview" id="photoPreview">
+  OP
+</div>
+
+<div style="text-align:center">
+
+<label
+  class="btn"
+  for="photoInput"
+  style="cursor:pointer"
+>
+📷 Pilih Gambar Personal
+</label>
+
+<input
+  id="photoInput"
+  type="file"
+  accept="image/*"
+  style="display:none"
+>
+
+<button
+  class="btn danger"
+  onclick="removeProfilePhoto()"
+  style="margin-left:6px"
+>
+Buang
+</button>
+
+</div>
+
+<p class="muted" style="margin-top:12px">
+Gambar disimpan pada telefon/peranti anda sahaja.
+Ia tidak dimuat naik ke GitHub.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Profile Information</h2>
+
+<label>Nama</label>
+<input id="fName">
+
+<label>Jawatan</label>
+<input id="fRole">
+
+<label>Company</label>
+<input id="fCompany">
+
+<label>Nationality</label>
+<input id="fNation">
+
+<label>Card No.</label>
+<input id="fCard">
+
+<label>Card Valid Till</label>
+<input id="fValid" type="date">
+
+<div class="actions" style="margin-top:13px">
+
+<button class="btn" onclick="saveProfile()">
+Save
+</button>
+
+<button class="btn alt" onclick="exportData()">
+Backup
+</button>
+
+<button class="btn alt" onclick="importData()">
+Restore
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="notice">
+
+<b>Security:</b>
+Jangan letak NRIC/passport dalam QR.
+Untuk production, tambah Face ID/passcode,
+encrypted storage dan secure cloud sync.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QR -->
+<section id="qr" class="screen">
+
+<div class="card">
+
+<h2>QR eCard</h2>
+
+<div style="text-align:center">
+
+<img
+  id="qrImage"
+  style="width:220px;height:220px;border-radius:12px;background:#fff"
+  alt="QR"
+>
+
+</div>
+
+<p class="muted">
+QR hanya membawa nama, jawatan, company,
+card number dan validity.
+</p>
+
+</div>
+
+</section>
+
 </main>
-<nav class="bottom"><div class="bottomIn">
-<button class="nav active" onclick="go('home',this)"><span>⌂</span>Home</button><button class="nav" onclick="go('cert',this)"><span>▣</span>Cert</button><button class="nav" onclick="go('training',this)"><span>◇</span>Training</button><button class="nav" onclick="go('log',this)"><span>◫</span>Log</button><button class="nav" onclick="go('profile',this)"><span>⚙</span>Profile</button>
-</div></nav>
+
+
+<!-- BOTTOM NAV -->
+<nav class="bottom">
+
+<div class="bottomIn">
+
+<button
+  class="nav active"
+  onclick="go('home',this)"
+>
+<span>⌂</span>
+Home
+</button>
+
+<button
+  class="nav"
+  onclick="go('cert',this)"
+>
+<span>▣</span>
+Cert
+</button>
+
+<button
+  class="nav"
+  onclick="go('training',this)"
+>
+<span>◇</span>
+Training
+</button>
+
+<button
+  class="nav"
+  onclick="go('log',this)"
+>
+<span>◫</span>
+Log
+</button>
+
+<button
+  class="nav"
+  onclick="go('profile',this)"
+>
+<span>⚙</span>
+Profile
+</button>
+
 </div>
+
+</nav>
+
+</div>
+
+
 <script>
-const seed={profile:{name:"MOHD FAIZAL B MOHAMED JAIS",role:"Material Coordinator",company:"EPOMS",nation:"Malaysia",card:"VPSB-OSPEN-03225",valid:"2028-01-09"},cert:[{n:"T-BOSIET / T-FOET",e:"2030-10-15"},{n:"Medical",e:"2028-02-09"},{n:"H2S",e:""}],training:[],log:[{p:"Larut Shutdown 2025",r:"Material Coordinator",c:"EPOMS",y:"2025"}],docs:["Vestigo Offshore Safety Card","NRIC / Passport","Medical Certificate"]};
-let d=JSON.parse(localStorage.getItem("offshorePassportV1")||"null")||seed;
-const $=x=>document.getElementById(x), esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-function persist(){localStorage.setItem("offshorePassportV1",JSON.stringify(d));render()}
-function fmt(x){if(!x)return"—";let a=x.split("-");return a.length===3?`${a[2]}/${a[1]}/${a[0]}`:x}
-function days(x){return x?Math.ceil((new Date(x+"T00:00:00")-new Date())/86400000):null}
-function go(id,btn){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));$(id).classList.add("active");document.querySelectorAll(".nav").forEach(n=>n.classList.remove("active"));if(btn)btn.classList.add("active");else document.querySelector(".nav").classList.toggle("active",id==="home");scrollTo(0,0)}
-function certStatus(e){let z=days(e);if(z===null)return["No date",""];if(z<0)return["Expired","bad"];if(z<90)return[z+" days","warn"];return[z+" days",""]}
-function render(){let p=d.profile;name.textContent=p.name;role.textContent=p.role;company.textContent=p.company;card.textContent=p.card;nation.textContent=p.nation;valid.textContent=fmt(p.valid);fName.value=p.name;fRole.value=p.role;fCompany.value=p.company;fNation.value=p.nation;fCard.value=p.card;fValid.value=p.valid;
-summary.innerHTML=d.cert.map(c=>{let s=certStatus(c.e);return `<div class="row"><div><b>${esc(c.n)}</b><div class="muted">${fmt(c.e)}</div></div><span class="status ${s[1]}">${s[0]}</span></div>`}).join("");
-certList.innerHTML=d.cert.map((c,i)=>{let s=certStatus(c.e);return `<div class="row"><div><b>${esc(c.n)}</b><div class="muted">Expiry: ${fmt(c.e)}</div></div><div><span class="status ${s[1]}">${s[0]}</span><button class="btn danger" onclick="del('cert',${i})" style="margin-left:5px;padding:7px">×</button></div></div>`}).join("")||'<div class="empty">Belum ada certification.</div>';
-trainingList.innerHTML=d.training.map((t,i)=>`<div class="row"><div><b>${esc(t.n)}</b><div class="muted">${esc(t.provider)} • ${fmt(t.e)}</div></div><button class="btn danger" onclick="del('training',${i})" style="padding:7px">×</button></div>`).join("")||'<div class="empty">Belum ada training.</div>';
-logList.innerHTML=d.log.map((x,i)=>`<div class="row"><div><b>${esc(x.p)}</b><div class="muted">${esc(x.r)} • ${esc(x.c)} • ${esc(x.y)}</div></div><button class="btn danger" onclick="del('log',${i})" style="padding:7px">×</button></div>`).join("");
-docList.innerHTML=d.docs.map((x,i)=>`<div class="row"><b>${esc(x)}</b><button class="btn danger" onclick="del('docs',${i})" style="padding:7px">×</button></div>`).join("");
-let payload={name:p.name,role:p.role,company:p.company,card:p.card,valid:p.valid};qr.src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="+encodeURIComponent(JSON.stringify(payload));
-}
-function saveProfile(){d.profile={name:fName.value,role:fRole.value,company:fCompany.value,nation:fNation.value,card:fCard.value,valid:fValid.value};persist();alert("Profile disimpan.")}
-function addCert(){let n=prompt("Nama certification:");if(!n)return;let e=prompt("Expiry YYYY-MM-DD (kosong jika tiada):")||"";d.cert.push({n,e});persist()}
-function addTraining(){let n=prompt("Nama training:");if(!n)return;let provider=prompt("Provider:")||"";let e=prompt("Expiry YYYY-MM-DD:")||"";d.training.push({n,provider,e});persist()}
-function addLog(){let p=prompt("Project / lokasi offshore:");if(!p)return;let r=prompt("Role:")||"Offshore Personnel";let y=prompt("Tahun:")||"";d.log.push({p,r,c:d.profile.company,y});persist()}
-function addDoc(){let x=prompt("Nama document:");if(x){d.docs.push(x);persist()}}
-function del(k,i){if(confirm("Padam item ini?")){d[k].splice(i,1);persist()}}
-function exportData(){let blob=new Blob([JSON.stringify(d,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="offshore-passport-backup.json";a.click()}
-function importData(){let i=document.createElement("input");i.type="file";i.accept=".json";i.onchange=()=>{let r=new FileReader();r.onload=()=>{try{d=JSON.parse(r.result);persist();alert("Backup dipulihkan.")}catch(e){alert("Fail backup tidak sah.")}};r.readAsText(i.files[0])};i.click()}
-let deferredPrompt;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;document.getElementById("installBox").classList.add("show")});function installApp(){if(deferredPrompt){deferredPrompt.prompt();deferredPrompt=null}else alert("Pada iPhone, Safari → Share → Add to Home Screen.")}
-if("serviceWorker"in navigator)navigator.serviceWorker.register("sw.js");
-const photoInput = document.getElementById("photoInput");
-const avatarBox = document.getElementById("avatarBox");
-function loadProfilePhoto(){
-  const photo = localStorage.getItem("profilePhoto");
-  if(photo){
-    avatarBox.innerHTML =
-      `<img src="${photo}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
+
+const seed = {
+
+profile:{
+  name:"MOHD FAIZAL B MOHAMED JAIS",
+  role:"Material Coordinator",
+  company:"EPOMS",
+  nation:"Malaysia",
+  card:"VPSB-OSPEN-03225",
+  valid:"2028-01-09"
+},
+
+cert:[
+  {
+    n:"T-BOSIET / T-FOET",
+    e:"2030-10-15"
+  },
+  {
+    n:"Medical",
+    e:"2028-02-09"
+  },
+  {
+    n:"H2S",
+    e:""
   }
-}
-photoInput?.addEventListener("change", function(e){
-  const file = e.target.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = function(){
-    localStorage.setItem("profilePhoto", reader.result);
-    loadProfilePhoto();
-  };
-  reader.readAsDataURL(file);
-});
-loadProfilePhoto();
-render();
-</script>
-<script>
-let deferredPrompt;
-const installBtn = document.getElementById("installBtn");
-window.addEventListener("beforeinstallprompt", e => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-installBtn.onclick = async () => {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt = null;
-  } else {
-    alert("Untuk iPhone: tekan Share ⬆️ → Add to Home Screen → Add.");
+],
+
+training:[],
+
+log:[
+  {
+    p:"Larut Shutdown 2025",
+    r:"Material Coordinator",
+    c:"EPOMS",
+    y:"2025"
   }
+],
+
+docs:[
+  "Vestigo Offshore Safety Card",
+  "NRIC / Passport",
+  "Medical Certificate"
+]
+
 };
+
+
+let d =
+JSON.parse(
+  localStorage.getItem("offshorePassportV1") || "null"
+) || seed;
+
+
+const $ = x => document.getElementById(x);
+
+
+const esc = s =>
+String(s ?? "").replace(
+  /[&<>"']/g,
+  m => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  }[m])
+);
+
+
+function persist(){
+
+  localStorage.setItem(
+    "offshorePassportV1",
+    JSON.stringify(d)
+  );
+
+  render();
+
+}
+
+
+function fmt(x){
+
+  if(!x) return "—";
+
+  let a = x.split("-");
+
+  return a.length === 3
+    ? `${a[2]}/${a[1]}/${a[0]}`
+    : x;
+
+}
+
+
+function days(x){
+
+  return x
+    ? Math.ceil(
+        (
+          new Date(x+"T00:00:00") -
+          new Date()
+        ) / 86400000
+      )
+    : null;
+
+}
+
+
+function go(id,btn){
+
+  document
+    .querySelectorAll(".screen")
+    .forEach(
+      s => s.classList.remove("active")
+    );
+
+  $(id).classList.add("active");
+
+
+  document
+    .querySelectorAll(".nav")
+    .forEach(
+      n => n.classList.remove("active")
+    );
+
+
+  if(btn){
+
+    btn.classList.add("active");
+
+  }else{
+
+    document
+      .querySelectorAll(".nav")
+      .forEach(n => {
+
+        if(
+          n.getAttribute("onclick") &&
+          n.getAttribute("onclick").includes("'"+id+"'")
+        ){
+
+          n.classList.add("active");
+
+        }
+
+      });
+
+  }
+
+
+  scrollTo(0,0);
+
+}
+
+
+function certStatus(e){
+
+  let z = days(e);
+
+  if(z === null)
+    return ["No date",""];
+
+  if(z < 0)
+    return ["Expired","bad"];
+
+  if(z < 90)
+    return [z+" days","warn"];
+
+  return [z+" days",""];
+
+}
+
+
+function render(){
+
+  let p = d.profile;
+
+
+  $("name").textContent = p.name;
+  $("role").textContent = p.role;
+  $("company").textContent = p.company;
+  $("card").textContent = p.card;
+  $("nation").textContent = p.nation;
+  $("valid").textContent = fmt(p.valid);
+
+
+  $("fName").value = p.name || "";
+  $("fRole").value = p.role || "";
+  $("fCompany").value = p.company || "";
+  $("fNation").value = p.nation || "";
+  $("fCard").value = p.card || "";
+  $("fValid").value = p.valid || "";
+
+
+  $("summary").innerHTML =
+    d.cert.map(c => {
+
+      let s = certStatus(c.e);
+
+      return `
+      <div class="row">
+
+        <div>
+          <b>${esc(c.n)}</b>
+          <div class="muted">${fmt(c.e)}</div>
+        </div>
+
+        <span class="status ${s[1]}">
+          ${s[0]}
+        </span>
+
+      </div>
+      `;
+
+    }).join("");
+
+
+  $("certList").innerHTML =
+    d.cert.map((c,i) => {
+
+      let s = certStatus(c.e);
+
+      return `
+      <div class="row">
+
+        <div>
+          <b>${esc(c.n)}</b>
+          <div class="muted">
+            Expiry: ${fmt(c.e)}
+          </div>
+        </div>
+
+        <div>
+
+          <span class="status ${s[1]}">
+            ${s[0]}
+          </span>
+
+          <button
+            class="btn danger"
+            onclick="del('cert',${i})"
+            style="margin-left:5px;padding:7px"
+          >
+            ×
+          </button>
+
+        </div>
+
+      </div>
+      `;
+
+    }).join("")
+    ||
+    '<div class="empty">Belum ada certification.</div>';
+
+
+  $("trainingList").innerHTML =
+    d.training.map((t,i) => {
+
+      return `
+      <div class="row">
+
+        <div>
+          <b>${esc(t.n)}</b>
+          <div class="muted">
+            ${esc(t.provider)} • ${fmt(t.e)}
+          </div>
+        </div>
+
+        <button
+          class="btn danger"
+          onclick="del('training',${i})"
+          style="padding:7px"
+        >
+          ×
+        </button>
+
+      </div>
+      `;
+
+    }).join("")
+    ||
+    '<div class="empty">Belum ada training.</div>';
+
+
+  $("logList").innerHTML =
+    d.log.map((x,i) => {
+
+      return `
+      <div class="row">
+
+        <div>
+          <b>${esc(x.p)}</b>
+
+          <div class="muted">
+            ${esc(x.r)}
+            • ${esc(x.c)}
+            • ${esc(x.y)}
+          </div>
+
+        </div>
+
+        <button
+          class="btn danger"
+          onclick="del('log',${i})"
+          style="padding:7px"
+        >
+          ×
+        </button>
+
+      </div>
+      `;
+
+    }).join("");
+
+
+  $("docList").innerHTML =
+    d.docs.map((x,i) => {
+
+      return `
+      <div class="row">
+
+        <b>${esc(x)}</b>
+
+        <button
+          class="btn danger"
+          onclick="del('docs',${i})"
+          style="padding:7px"
+        >
+          ×
+        </button>
+
+      </div>
+      `;
+
+    }).join("");
+
+
+  let payload = {
+
+    name:p.name,
+    role:p.role,
+    company:p.company,
+    card:p.card,
+    valid:p.valid
+
+  };
+
+
+  $("qrImage").src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data="
+    +
+    encodeURIComponent(
+      JSON.stringify(payload)
+    );
+
+
+  loadProfilePhoto();
+
+}
+
+
+function saveProfile(){
+
+  d.profile = {
+
+    name:$("fName").value,
+    role:$("fRole").value,
+    company:$("fCompany").value,
+    nation:$("fNation").value,
+    card:$("fCard").value,
+    valid:$("fValid").value
+
+  };
+
+
+  persist();
+
+  alert("Profile disimpan.");
+
+}
+
+
+function addCert(){
+
+  let n = prompt(
+    "Nama certification:"
+  );
+
+  if(!n) return;
+
+  let e =
+    prompt(
+      "Expiry YYYY-MM-DD (kosong jika tiada):"
+    ) || "";
+
+  d.cert.push({
+    n,
+    e
+  });
+
+  persist();
+
+}
+
+
+function addTraining(){
+
+  let n = prompt(
+    "Nama training:"
+  );
+
+  if(!n) return;
+
+  let provider =
+    prompt("Provider:") || "";
+
+  let e =
+    prompt("Expiry YYYY-MM-DD:") || "";
+
+  d.training.push({
+    n,
+    provider,
+    e
+  });
+
+  persist();
+
+}
+
+
+function addLog(){
+
+  let p =
+    prompt(
+      "Project / lokasi offshore:"
+    );
+
+  if(!p) return;
+
+  let r =
+    prompt("Role:") ||
+    "Offshore Personnel";
+
+  let y =
+    prompt("Tahun:") || "";
+
+  d.log.push({
+
+    p,
+    r,
+    c:d.profile.company,
+    y
+
+  });
+
+  persist();
+
+}
+
+
+function addDoc(){
+
+  let x =
+    prompt("Nama document:");
+
+  if(x){
+
+    d.docs.push(x);
+
+    persist();
+
+  }
+
+}
+
+
+function del(k,i){
+
+  if(
+    confirm("Padam item ini?")
+  ){
+
+    d[k].splice(i,1);
+
+    persist();
+
+  }
+
+}
+
+
+function exportData(){
+
+  let blob =
+    new Blob(
+      [
+        JSON.stringify(
+          d,
+          null,
+          2
+        )
+      ],
+      {
+        type:"application/json"
+      }
+    );
+
+
+  let a =
+    document.createElement("a");
+
+  a.href =
+    URL.createObjectURL(blob);
+
+  a.download =
+    "offshore-passport-backup.json";
+
+  a.click();
+
+}
+
+
+function importData(){
+
+  let i =
+    document.createElement("input");
+
+  i.type = "file";
+  i.accept = ".json";
+
+
+  i.onchange = () => {
+
+    let r =
+      new FileReader();
+
+
+    r.onload = () => {
+
+      try{
+
+        d =
+          JSON.parse(
+            r.result
+          );
+
+        persist();
+
+        alert(
+          "Backup dipulihkan."
+        );
+
+      }catch(e){
+
+        alert(
+          "Fail backup tidak sah."
+        );
+
+      }
+
+    };
+
+
+    r.readAsText(
+      i.files[0]
+    );
+
+  };
+
+
+  i.click();
+
+}
+
+
+/* =========================
+   PERSONAL PHOTO
+   ========================= */
+
+
+const photoInput =
+  document.getElementById(
+    "photoInput"
+  );
+
+
+const avatarBox =
+  document.getElementById(
+    "avatarBox"
+  );
+
+
+const photoPreview =
+  document.getElementById(
+    "photoPreview"
+  );
+
+
+function loadProfilePhoto(){
+
+  const photo =
+    localStorage.getItem(
+      "profilePhoto"
+    );
+
+
+  if(photo){
+
+    avatarBox.innerHTML =
+      `<img src="${photo}" alt="Personal Photo">`;
+
+
+    photoPreview.innerHTML =
+      `<img src="${photo}" alt="Personal Photo">`;
+
+  }else{
+
+    avatarBox.textContent = "OP";
+
+    photoPreview.textContent = "OP";
+
+  }
+
+}
+
+
+photoInput.addEventListener(
+  "change",
+  function(e){
+
+    const file =
+      e.target.files[0];
+
+    if(!file) return;
+
+
+    const reader =
+      new FileReader();
+
+
+    reader.onload =
+      function(event){
+
+        const img =
+          new Image();
+
+
+        img.onload =
+          function(){
+
+            const maxSize = 800;
+
+            let width =
+              img.width;
+
+            let height =
+              img.height;
+
+
+            if(
+              width > maxSize ||
+              height > maxSize
+            ){
+
+              if(width > height){
+
+                height =
+                  height *
+                  maxSize /
+                  width;
+
+                width =
+                  maxSize;
+
+              }else{
+
+                width =
+                  width *
+                  maxSize /
+                  height;
+
+                height =
+                  maxSize;
+
+              }
+
+            }
+
+
+            const canvas =
+              document.createElement(
+                "canvas"
+              );
+
+
+            canvas.width =
+              width;
+
+            canvas.height =
+              height;
+
+
+            const ctx =
+              canvas.getContext(
+                "2d"
+              );
+
+
+            ctx.drawImage(
+              img,
+              0,
+              0,
+              width,
+              height
+            );
+
+
+            const compressed =
+              canvas.toDataURL(
+                "image/jpeg",
+                0.75
+              );
+
+
+            try{
+
+              localStorage.setItem(
+                "profilePhoto",
+                compressed
+              );
+
+
+              loadProfilePhoto();
+
+              alert(
+                "Gambar personal berjaya disimpan."
+              );
+
+            }catch(error){
+
+              alert(
+                "Gambar terlalu besar. Cuba pilih gambar lain."
+              );
+
+            }
+
+          };
+
+
+        img.src =
+          event.target.result;
+
+      };
+
+
+    reader.readAsDataURL(file);
+
+  }
+);
+
+
+function removeProfilePhoto(){
+
+  if(
+    confirm(
+      "Buang gambar personal?"
+    )
+  ){
+
+    localStorage.removeItem(
+      "profilePhoto"
+    );
+
+    loadProfilePhoto();
+
+  }
+
+}
+
+
+/* =========================
+   PWA INSTALL
+   ========================= */
+
+
+let deferredPrompt;
+
+
+window.addEventListener(
+  "beforeinstallprompt",
+  e => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    document
+      .getElementById(
+        "installBox"
+      )
+      .classList.add("show");
+
+  }
+);
+
+
+function installApp(){
+
+  if(deferredPrompt){
+
+    deferredPrompt.prompt();
+
+    deferredPrompt = null;
+
+  }else{
+
+    alert(
+      "Pada iPhone: Safari → Share ⬆️ → Add to Home Screen."
+    );
+
+  }
+
+}
+
+
+/* =========================
+   SERVICE WORKER
+   ========================= */
+
+
+if(
+  "serviceWorker" in navigator
+){
+
+  navigator.serviceWorker.register(
+    "sw.js"
+  );
+
+}
+
+
+/* START */
+
+render();
+
 </script>
-</body></html>
+
+</body>
+</html>
