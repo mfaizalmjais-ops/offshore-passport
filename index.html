@@ -97,33 +97,26 @@ function loadProfilePhoto(){
       `<img src="${photo}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">`;
   }
 }
-
 photoInput?.addEventListener("change", function(e){
   const file = e.target.files[0];
   if(!file) return;
-
   const reader = new FileReader();
-
   reader.onload = function(){
     localStorage.setItem("profilePhoto", reader.result);
     loadProfilePhoto();
   };
-
   reader.readAsDataURL(file);
 });
-
 loadProfilePhoto();
 render();
 </script>
 <script>
 let deferredPrompt;
 const installBtn = document.getElementById("installBtn");
-
 window.addEventListener("beforeinstallprompt", e => {
   e.preventDefault();
   deferredPrompt = e;
 });
-
 installBtn.onclick = async () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
