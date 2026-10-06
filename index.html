@@ -45,7 +45,11 @@ input,textarea,select{width:100%;border:1px solid #d5dce6;border-radius:11px;pad
 <section id="training" class="screen"><div class="card"><h2>Training Records</h2><div id="trainingList" class="list"></div><button class="btn" onclick="addTraining()" style="margin-top:12px">+ Add Training</button></div></section>
 <section id="log" class="screen"><div class="card"><h2>Offshore Work Log</h2><div id="logList" class="list"></div><button class="btn" onclick="addLog()" style="margin-top:12px">+ Add Offshore Record</button></div></section>
 <section id="docs" class="screen"><div class="card"><h2>Documents</h2><p class="muted">Untuk V1, rekod dokumen disimpan sebagai metadata. Upload fail/encryption/cloud backup boleh ditambah pada V2.</p><div id="docList" class="list"></div><button class="btn" onclick="addDoc()" style="margin-top:12px">+ Add Document</button></div></section>
-<section id="profile" class="screen"><div class="card"><h2>My Profile</h2>
+<div class="card">
+  <h2>Personal Photo</h2>
+  <label class="btn" for="photoInput">📷 Pilih Gambar Personal</label>
+  <input id="photoInput" type="file" accept="image/*" style="display:none">
+</div>
 <label class="btn" for="photoInput"> Pilih Gambar Personal</label>
 <input id="photoInput" type="file" accept="image/*" style="display:none">
 <label>Nama</label><input id="fName"><label>Jawatan</label><input id="fRole"><label>Company</label><input id="fCompany"><label>Nationality</label><input id="fNation"><label>Card No.</label><input id="fCard"><label>Card Valid Till</label><input id="fValid" type="date">
