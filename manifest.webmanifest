@@ -6,13 +6,11 @@
   "display": "standalone",
   "background_color": "#f3f6fa",
   "theme_color": "#073b70",
-  "description": "Personal digital offshore passport",
-  "icons": [
-    {
-      "src": "Vestigo%20Logo.WEBP",
-      "sizes": "any",
-      "type": "image/webp",
-      "purpose": "any maskable"
-    }
-  ]
-}
+  "description": "Personal digital offshore "icons": [
+  {
+    "src": "EPOMS%20LOGO.PNG",
+    "sizes": "any",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }
+]
